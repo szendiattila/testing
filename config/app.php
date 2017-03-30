@@ -177,6 +177,11 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+        /*
+         * Repository bindings
+         */
+        App\Providers\ProductServiceProvider::class,
+
     ],
 
     /*
