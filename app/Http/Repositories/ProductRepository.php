@@ -31,4 +31,19 @@ class ProductRepository implements IProductRepository
     {
         return Product::create($request->all());
     }
+
+    /**
+     * @param $product
+     * @param $request
+     * @return mixed
+     */
+    public function updateProduct($product, $request)
+    {
+        return $product->update($request->all());
+    }
+
+    public function deleteProduct($product)
+    {
+        return $product->delete();
+    }
 }

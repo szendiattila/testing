@@ -1,7 +1,10 @@
-<?php
-/**
- * Created by PhpStorm.
- * User: Szendi Attila
- * Date: 2017. 03. 31.
- * Time: 1:31
- */
+@extends('layouts.app')
+
+@section('content')
+    <h1>Új termék hozzáadása</h1>
+
+    {{ Form::open(['url' => 'dashboard/products']) }}
+
+    @include('product.partials._form', ['submitButton' => 'Mentés'])
+
+@stop

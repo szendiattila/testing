@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Contracts\IProductRepository;
 use App\Http\Requests\ProductRequest;
+use App\Product;
 
 /**
  * Class ProductController
@@ -53,6 +54,36 @@ class ProductController extends Controller
     public function store(ProductRequest $request)
     {
         $this->productRepository->storeProduct($request);
+
+        return redirect('dashboard/products');
+    }
+
+    /**
+     * Show edit form
+     * @param Product $product
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function edit(Product $product)
+    {
+        return view('product.edit', compact('product'));
+    }
+
+    /**
+     * Updates a product
+     * @param Product $product
+     * @param ProductRequest $request
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
+    public function update(Product $product, ProductRequest $request)
+    {
+        $this->productRepository->updateProduct($product, $request);
+
+        return redirect('dashboard/products');
+    }
+
+    public function destroy(Product $product)
+    {
+        $this->productRepository->deleteProduct($product);
 
         return redirect('dashboard/products');
     }
